@@ -37,3 +37,5 @@ ansible-playbook : permet de jouer les playbook
 	ansible-playbook --check --diff webserver.yml : vérifie et voir ce qu'il va modifier
 	ansible-playbook -v --step  webserver.yml : lancer pas à pas 
 
+Ansible lance les actions en parallèle par bloc de 10 machine par défaut
+

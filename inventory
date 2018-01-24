@@ -1,2 +1,6 @@
+# fichier type ini
+
+# Groupe de websers
+[webservers]
 node1
 node2
