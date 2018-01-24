@@ -1,0 +1,12 @@
+---
+# fichier de configuration http
+- host: node1
+  tasks:
+     - name: verification du package apache2
+       apt:
+          name: apache2
+          state: present
+     - name: deploiement index.html
+       copy:
+          dest: /var/www/index.html
+          content: Coucou, je suis ansible

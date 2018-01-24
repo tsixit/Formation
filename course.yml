@@ -11,4 +11,5 @@ boissons:
     - coca
 légumes:
     - carottes
-# yamllint:peermet de vérifier la syntaxe yaml
+# yamllint: utilitaire permettant  de vérifier la syntaxe yaml
+# yamllint <fic>
