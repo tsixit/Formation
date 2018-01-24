@@ -1,0 +1,13 @@
+---
+#indentation c'est deux fois espaces
+#Liste de course
+boulangerie:
+    - pain
+boucherie:
+    - gigot
+    - steack
+boissons:
+    - bière
+    - coca
+légumes:
+    - carottes

@@ -1,0 +1,14 @@
+YAML_note
+
+#Liste:
+- element 1
+
+- element 2
+#chaine :
+coucou
+
+#nombre
+123
+
+#tableau/dictionnaire/
+clé:valeur

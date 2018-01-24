@@ -1,7 +1,32 @@
 ansible -i  "node1," -m ping -u root all 
+
 ansible -i  inventory  -m ping -u root all
 	invotory = fichier contenant une liste de machine
 
 ansible.cfg = permet de stocker des varaiables ( fichier inventaire, user, ..)
-
 ansible -m ping all 
+
+ansible -m command -a "ls -ltr /tmp" all 
+	module command : module par défaut , permet d'exécuter des commandes unix dans les noeud
+	-a = permet d'ajouter un argument au module
+	ansible -a "uname -r " all
+	ce module ne permet pas de faire des rediretions, des pipes
+
+module shell : permet d'aller audela de la limite du module "command"
+	ansible -m user -a "name=gilles shell=/bin/bash home=/home/gilles" all
+
+module file : permet de vérifier la permission et la presence d'un fichier
+	ansible -m file -a "path=/tmp/toto state=file" all
+
+module copy : permet d'ajouter du contenu dans un fichier e garantir la conformité
+	ansible -m copy -a "dest=/tmp/dawn content=coucou" all
+
+module user = permet de vérifier si l'user existe bien
+
+ansible-doc <module> = document sur un module
+ansible-doc -l = liste des modules
+
+module apt : piloter le gestionnaire de paquet debian "apt"
+	ansible -m apt -a "name=tmux state=present" all
+	ansible -m apt -a "name=tmux state=absent" all
+
