@@ -39,3 +39,5 @@ ansible-playbook : permet de jouer les playbook
 
 Ansible lance les actions en parallèle par bloc de 10 machine par défaut
 
+ansible --list-hosts webservers : permet de savoir la liste des machines dans un groupe donnée
+

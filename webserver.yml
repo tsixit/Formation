@@ -1,6 +1,6 @@
 ---
 # fichier de configuration http
-- hosts: all
+- hosts: webservers
   name: Déploiement apache sur node1
   tasks:
      - name: verification du package apache2
