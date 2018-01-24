@@ -1,0 +1,7 @@
+ansible -i  "node1," -m ping -u root all 
+ansible -i  inventory  -m ping -u root all
+	invotory = fichier contenant une liste de machine
+
+ansible.cfg = permet de stocker des varaiables ( fichier inventaire, user, ..)
+
+ansible -m ping all 
