@@ -1,6 +1,6 @@
 ---
-#indentation c'est deux fois espaces
-#Liste de course
+# indentation c'est deux fois espaces
+# Liste de course
 boulangerie:
     - pain
 boucherie:
@@ -11,3 +11,4 @@ boissons:
     - coca
 légumes:
     - carottes
+# yamllint:peermet de vérifier la syntaxe yaml
