@@ -30,3 +30,10 @@ module apt : piloter le gestionnaire de paquet debian "apt"
 	ansible -m apt -a "name=tmux state=present" all
 	ansible -m apt -a "name=tmux state=absent" all
 
+ansible-playbook : permet de jouer les playbook
+	ansible-playbook --syntax-check webserver.yml : vérifie la syntaxe yaml
+	ansible-playbook --list-tasks webserver.yml : afficher les tasks
+	ansible-playbook --check webserver.yml  : vérifier sans appliquer le playbook
+	ansible-playbook --check --diff webserver.yml : vérifie et voir ce qu'il va modifier
+	ansible-playbook -v --step  webserver.yml : lancer pas à pas 
+
