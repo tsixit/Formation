@@ -1,7 +1,8 @@
 # fichier format ini
 node1 message="Node1 est la meilleur !!\n"
 node2
-node3 
+node3
+node4
 # Groupe de webservers
 [webservers]
 node1 

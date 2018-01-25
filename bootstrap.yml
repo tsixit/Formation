@@ -34,7 +34,7 @@
         content: "{{ message | default('Coucou ! ') }}\n
         Ce système est géré par Ansible et tourne sur {{ ansible_distribution }}\n
         Version du noyau : {{ ansible_kernel }}\n
-        Mon IP est : {{ ansible_default_ipv4.address }}"
+        Mon IP est : {{ ansible_default_ipv4.address}}\n"
         mode: 0644
         owner: root
         group: root
