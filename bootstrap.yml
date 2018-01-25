@@ -30,7 +30,8 @@
       copy:
         dest: /etc/motd
         content: "{{ message | default('Coucou ! ') }}\n
-        Ce système est géré par Ansible et tourne sur {{ ansible_distribution }}\n"
+        Ce système est géré par Ansible et tourne sur {{ ansible_distribution }}\n
+        Version du noyau : {{ ansible_kernel }}"
         mode: 0644
         owner: root
         group: root

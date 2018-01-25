@@ -72,7 +72,7 @@ On peut ajouter une variable à une machine de l'inventaire .
 La declaration d'une variables dans le playbook et en meme temps dans l'inventaire masque la valeur de la variable défini dans le playbook.
 Donc pour faire, on supprime la déclaration de la variable dans le playbook, on ajoute un filtre jinja2 pour une valeur par defaut, ensuite on définit la valeur voulu dans l'inventaire.
 
-ansible -m setup : ce module permet de récupéer des informations sur le host
+ansible -m setup : ce module permet de récupéer des informations sur le host(os,fs,système,user,...).
 ansible -m setup -a "filter=ansible_os_family" : permet de faire un filtre
 ansible -m setup -o -a "filter=<filtre>" : permet de faire un filtre : afficher sur une seule ligne
 
