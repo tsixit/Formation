@@ -5,6 +5,8 @@
   vars:
     message: " Bonjour !"
   tasks:
+    - debug:
+      var: ansible_os_family
     - name: Vérification de l'absence du fichier OOaptproxy
       file:
         path: /etc/apt/apt.conf.d/00aptproxy

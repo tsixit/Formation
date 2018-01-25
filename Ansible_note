@@ -100,4 +100,6 @@ ansible -m setup -o -a "filter=<filtre>" : permet de faire un filtre : afficher 
 
 ansible_default_ipv4.address: permet de récuper la valeur d'un disctionnaire
 
-le module package permet de gérer automatiquement le gestionnaire de paquet en fonction de la distribution (apt, yum)
+le module "package" permet de gérer automatiquement le gestionnaire de paquet en fonction de la distribution (apt, yum)
+
+Le module "debug" avec l'argument "var" permet d'afficher la valeur d'une variable
