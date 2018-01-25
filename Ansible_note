@@ -1,3 +1,8 @@
+Prerequis:
+	-	ssh ok
+	-	clé publique déployé dans /root/.ssh/authorized_keys
+
+
 ansible -i  "node1," -m ping -u root all 
 
 ansible -i  inventory  -m ping -u root all

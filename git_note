@@ -1,5 +1,6 @@
 
 
 git log  -1 -p : affichage log en mode patch
+git log -3 --oneline
 
 tig : utilitaire pour afficher les logs git de façon plus explicite

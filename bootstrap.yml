@@ -1,0 +1,17 @@
+---
+# Bootstraping
+- hosts: node3
+  name: Vérification prérequis ansible
+  tasks:
+    - name: Conformité du serveur ssh
+      apt:
+        name: openssh-server
+        state: present
+    - name: Démarre le service sshd
+      service:
+        name: sshd
+        state: started
+    - name: Déploiement clé ssh
+      copy:
+        src: key/serverkey.pub
+        dest: /root/.ssh/authorized_keys
