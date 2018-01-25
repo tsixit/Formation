@@ -1,5 +1,5 @@
 # fichier format ini
-node1 message="Node1 est la meilleur !!"
+node1 message="Node1 est la meilleur !!\n"
 node2
 node3 
 # Groupe de webservers
@@ -7,5 +7,6 @@ node3
 node1 
 node2
 
+# Déclaration de variables sur un groupe de serveur
 [webservers:vars]
-message="coucou, mais pour un webserver"
+message="coucou, mais pour un webserver\,"
