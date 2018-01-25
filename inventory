@@ -1,7 +1,11 @@
 # fichier format ini
-
-# Groupe de websers
-[webservers]
-node1
+node1 message="Node1 est la meilleur !!"
 node2
-node3 message="Node3 est la meilleur !!"
+node3 
+# Groupe de webservers
+[webservers]
+node1 
+node2
+
+[webservers:vars]
+message="coucou, mais pour un webserver"
