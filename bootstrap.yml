@@ -33,9 +33,14 @@
         group: root
 - hosts: all
   name: "Deuxième partie: Conf ssh"
+  handlers:
+  # Une tache qui va être appelé par une autre tache quand il y a un changement de ce dernier 
+    - name: Relance sshd
+      service: sshd
+      state: reloaded
   tasks:
     - name: Nouveau fichier sshd
-    # Permet de modifier une ligne dans le ficgier de conf
+    # Permet de modifier une ligne dans le fichier de conf
       lineinfile: 
         path: /etc/ssh/sshd_config
         line: PermitRootLogin without-password
@@ -44,7 +49,6 @@
         owner: root
         group: root
         mode: 0644
-    - name: Relance du serveur ssh
-      service:
-        name: sshd
-        state: reloaded
+      notify: 
+        # Une liste des noms des handlers qui va être appéler s'il y a eu un changement
+        - Relance sshd 
