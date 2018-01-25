@@ -1,13 +1,17 @@
 ---
 # Bootstraping
 - hosts: all
-  name: Bootstraping ves vms
+  name: Bootstraping des vms
   tasks:
-    - name: Conformité du serveur ssh
+    - name: Vérification de l'absence du fichier OOaptproxy
+      file:
+        path: /etc/apt/apt.conf.d/00aptproxy
+        state: absent
+    - name: Installation serveur ssh
       apt:
         name: openssh-server
         state: present
-    - name: Démarre le service sshd
+    - name: Démarrer le service sshd et  démarrer au boot
       service:
         name: sshd
         state: started
@@ -20,3 +24,7 @@
         mode: 0600
         owner: root
         group: root
+    - name: Garantir le /etc/motd
+      file:
+        dest: /etc/motd
+        content: "Ce système et géré par Ansible"
