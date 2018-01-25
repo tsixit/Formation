@@ -31,11 +31,20 @@
         mode: 0644
         owner: root
         group: root
+- hosts: all
+  name: "Deuxième partie: Conf ssh"
   tasks:
-    - name: Desactive l'accès root pas mot de passe en ssh
-      copy:
-        src: sshd_config
-        dest: /etc/ssh/sshd_config
-        ower: root
+    - name: Nouveau fichier sshd
+    # Permet de modifier une ligne dans le ficgier de conf
+      lineinfile: 
+        path: /etc/ssh/sshd_config
+        line: PermitRootLogin without-password
+        regexp: "^#?PermitRootLogin .*"
+        state: present
+        owner: root
         group: root
         mode: 0644
+    - name: Relance du serveur ssh
+      service:
+        name: sshd
+        state: reloaded

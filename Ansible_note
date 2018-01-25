@@ -46,7 +46,8 @@ ansible-playbook : permet de jouer les playbook
 	ansible-playbook  webserver.yml -l '!node1' : tout sauf une machine, ici node1
 	ansible-playbook bootstrap.yml -l node3 -k : -k permet de se connecter avec le mot de passe. cela necessite l'installation de sshpass sur la machine pilote.utile pour la première connexion  au serveur. Mais avant il faut récuperer la clé publique du serveur.
 	ansible-playbook bootstrap.yml --start-at-task "nom du task" : permet de démarrer le playbook au task indiqué
-	
+
+ansible -m fetch
 
 Ansible lance les actions en parallèle par bloc de 10 machine par défaut
 
@@ -55,4 +56,4 @@ ansible --list-hosts webservers : permet de savoir la liste des machines dans un
 Il est possible d'appliquer aussi le play-book sur le host local
 	ansible-playbook -i 'localhost' --connection=local bootstrap.yml (il exécute le code python directement en local)
 
-
+auges : module permet de modifier une partie d'un fichier de configuration, pour l'instant il n'est pas intégré 
