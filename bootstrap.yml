@@ -60,3 +60,10 @@
       notify:
         # liste des noms des handlers qui va être appéler par ce task
         - Relance sshd
+- hosts: all
+  name: "Troisieme partie: Gestion des  hostnames"
+  tasks:
+    - name: Changement des hostnames
+      hostname:
+        name: "{{ inventory_hostname }}"
+
