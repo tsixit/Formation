@@ -1,7 +1,7 @@
 ---
 # Bootstraping
-- hosts: node2
-  name: Vérification prérequis ansible
+- hosts: all
+  name: Bootstraping ves vms
   tasks:
     - name: Conformité du serveur ssh
       apt:
@@ -9,10 +9,11 @@
         state: present
     - name: Démarre le service sshd
       service:
-        name: ssh
+        name: sshd
         state: started
-        enabled: yes
-    - name: Déploiement clé ssh
+        enabled: 'yes'
+        # enabled permet de démarrer le service au boot
+    - name: Déploiement clé ssh pour root
       copy:
         src: key/serverkey.pub
         dest: /root/.ssh/authorized_keys
