@@ -24,7 +24,9 @@
         mode: 0600
         owner: root
         group: root
-    - name: Garantir le /etc/motd
-      file:
+    - name: Garantir le fichier /etc/motd
+      copy:
         dest: /etc/motd
-        content: "Ce système et géré par Ansible"
+        content: "Ce système est géré par Ansible"
+        owner: root
+        group: root
