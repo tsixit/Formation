@@ -31,3 +31,11 @@
         mode: 0644
         owner: root
         group: root
+  tasks:
+    - name: Desactive l'accès root pas mot de passe en ssh
+      copy:
+        src: sshd_config
+        dest: /etc/ssh/sshd_config
+        ower: root
+        group: root
+        mode: 0644
