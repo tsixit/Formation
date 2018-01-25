@@ -44,7 +44,7 @@
         state: reloaded
   tasks:
     - name: Nouveau fichier sshd
-      # Permet de modifier une ligne dans le fichier de conf
+      # module permettnat de modifier une ligne dans un fichier de conf
       lineinfile:
         path: /etc/ssh/sshd_config
         line: PermitRootLogin without-password
