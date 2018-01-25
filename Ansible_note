@@ -36,8 +36,13 @@ ansible-playbook : permet de jouer les playbook
 	ansible-playbook --check webserver.yml  : vérifier sans appliquer le playbook
 	ansible-playbook --check --diff webserver.yml : vérifie et voir ce qu'il va modifier
 	ansible-playbook -v --step  webserver.yml : lancer pas à pas 
+	ansible-playbook --list-hosts --list-tasks webserver.yml
+	ansible-playbook  webserver.yml -l 'node1' : restreinte l'exécution sur une machine de la liste ou groupe
+	ansible-playbook  webserver.yml -l '!node1' : tout sauf une machine, ici node1
 
 Ansible lance les actions en parallèle par bloc de 10 machine par défaut
 
 ansible --list-hosts webservers : permet de savoir la liste des machines dans un groupe donnée
+
+
 
