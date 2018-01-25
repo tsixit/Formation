@@ -2,6 +2,8 @@
 # Bootstraping
 - hosts: all
   name: Bootstraping des vms
+  vars: 
+    message: "Bonjour !"
   tasks:
     - name: Vérification de l'absence du fichier OOaptproxy
       file:
@@ -27,21 +29,22 @@
     - name: Garantir le fichier /etc/motd
       copy:
         dest: /etc/motd
-        content: "Ce système est géré par Ansible\n"
+        content: "{{message}}, Ce système est géré par Ansible\n"
         mode: 0644
         owner: root
         group: root
 - hosts: all
   name: "Deuxième partie: Conf ssh"
   handlers:
-  # Une tache qui va être appelé par une autre tache quand il y a un changement de ce dernier 
+    # Une tache qui va être appelé par une autre tache
     - name: Relance sshd
-      service: sshd
-      state: reloaded
+      service:
+        name: sshd 
+        state: reloaded
   tasks:
     - name: Nouveau fichier sshd
-    # Permet de modifier une ligne dans le fichier de conf
-      lineinfile: 
+      # Permet de modifier une ligne dans le fichier de conf
+      lineinfile:
         path: /etc/ssh/sshd_config
         line: PermitRootLogin without-password
         regexp: "^#?PermitRootLogin .*"
@@ -49,6 +52,6 @@
         owner: root
         group: root
         mode: 0644
-      notify: 
-        # Une liste des noms des handlers qui va être appéler s'il y a eu un changement
-        - Relance sshd 
+      notify:
+        # Une liste des noms des handlers qui va être appéler par ce task
+        - Relance sshd

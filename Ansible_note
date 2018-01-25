@@ -57,3 +57,5 @@ Il est possible d'appliquer aussi le play-book sur le host local
 	ansible-playbook -i 'localhost' --connection=local bootstrap.yml (il exécute le code python directement en local)
 
 auges : module permet de modifier une partie d'un fichier de configuration, pour l'instant il n'est pas intégré 
+
+jinja2 : moteur de templating
