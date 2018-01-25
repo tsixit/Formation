@@ -58,4 +58,11 @@ Il est possible d'appliquer aussi le play-book sur le host local
 
 auges : module permet de modifier une partie d'un fichier de configuration, pour l'instant il n'est pas intégré 
 
-jinja2 : moteur de templating
+
+
+handler : une tache qui va être appeler par une autre tache seulement quand cette dernière a efféctuer un changement
+
+jinja2 : moteur de templating, utile pour l'utilisation des variables
+	on peut ajouter des filtes; dans le cas d'une variable cela permet d'avoir une valeur par défaut de la valeur dans le cas où celle-ci n'est pas définie
+	exe: content: {{ message | default('Coucou ! ') }}
+	si message est absent, c'est la valeur de defaut qui sera utilisé.

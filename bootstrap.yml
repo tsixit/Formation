@@ -2,7 +2,7 @@
 # Bootstraping
 - hosts: all
   name: Bootstraping des vms
-  vars: 
+  vars:
     message: "Bonjour !"
   tasks:
     - name: Vérification de l'absence du fichier OOaptproxy
@@ -29,7 +29,8 @@
     - name: Garantir le fichier /etc/motd
       copy:
         dest: /etc/motd
-        content: "{{message}}, Ce système est géré par Ansible\n"
+        content: "{{ message | default('Coucou ! ') }}\n
+        Ce système est géré par Ansible\n"
         mode: 0644
         owner: root
         group: root
@@ -39,7 +40,7 @@
     # Une tache qui va être appelé par une autre tache
     - name: Relance sshd
       service:
-        name: sshd 
+        name: sshd
         state: reloaded
   tasks:
     - name: Nouveau fichier sshd
@@ -53,5 +54,5 @@
         group: root
         mode: 0644
       notify:
-        # Une liste des noms des handlers qui va être appéler par ce task
+        # liste des noms des handlers qui va être appéler par ce task
         - Relance sshd
