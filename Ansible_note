@@ -68,6 +68,28 @@ jinja2 : moteur de templating, utile pour l'utilisation des variables
 	exe: content: {{ message | default('Coucou ! ') }}
 	si message est absent, c'est la valeur de defaut qui sera utilisé.
 
+	Pourt récuperer la valeur d'une clé dans une dictionnaire :
+    Ex: pour récuper lavaleur de l'adresse IP , 
+    on fait ansible_default_ipv4.address dans le playbook
+	node1 | SUCCESS => {
+    "ansible_facts": {
+        "ansible_default_ipv4": {
+            "address": "192.168.75.27", 
+            "alias": "enp0s3", 
+            "broadcast": "192.168.75.255", 
+            "gateway": "192.168.75.1", 
+            "interface": "enp0s3", 
+            "macaddress": "08:00:27:55:8d:3a", 
+            "mtu": 1500, 
+            "netmask": "255.255.255.0", 
+            "network": "192.168.75.0", 
+            "type": "ether"
+        }
+    }, 
+    "changed": false
+}
+	ansible_default_ipv4.address
+
 On peut ajouter une variable à une machine de l'inventaire .
 La declaration d'une variables dans le playbook et en meme temps dans l'inventaire masque la valeur de la variable défini dans le playbook.
 Donc pour faire, on supprime la déclaration de la variable dans le playbook, on ajoute un filtre jinja2 pour une valeur par defaut, ensuite on définit la valeur voulu dans l'inventaire.
@@ -76,3 +98,6 @@ ansible -m setup : ce module permet de récupéer des informations sur le host(o
 ansible -m setup -a "filter=ansible_os_family" : permet de faire un filtre
 ansible -m setup -o -a "filter=<filtre>" : permet de faire un filtre : afficher sur une seule ligne
 
+ansible_default_ipv4.address: permet de récuper la valeur d'un disctionnaire
+
+le module package permet de gérer automatiquement le gestionnaire de paquet en fonction de la distribution (apt, yum)

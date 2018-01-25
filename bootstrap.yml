@@ -3,14 +3,16 @@
 - hosts: all
   name: Bootstraping des vms
   vars:
-    message: "Bonjour !"
+    message: " Bonjour !"
   tasks:
     - name: Vérification de l'absence du fichier OOaptproxy
       file:
         path: /etc/apt/apt.conf.d/00aptproxy
         state: absent
+      when: "ansible_os_family == 'Debian'"
     - name: Installation serveur ssh
-      apt:
+      # apt:
+      package:
         name: openssh-server
         state: present
     - name: Démarrer le service sshd et démarrer au boot
