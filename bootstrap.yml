@@ -11,7 +11,7 @@
       apt:
         name: openssh-server
         state: present
-    - name: Démarrer le service sshd et  démarrer au boot
+    - name: Démarrer le service sshd et démarrer au boot
       service:
         name: sshd
         state: started
@@ -27,6 +27,7 @@
     - name: Garantir le fichier /etc/motd
       copy:
         dest: /etc/motd
-        content: "Ce système est géré par Ansible"
+        content: "Ce système est géré par Ansible\n"
+        mode: 0644
         owner: root
         group: root
