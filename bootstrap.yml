@@ -1,6 +1,6 @@
 ---
 # Bootstraping
-- hosts: node3
+- hosts: node2
   name: Vérification prérequis ansible
   tasks:
     - name: Conformité du serveur ssh
@@ -9,9 +9,13 @@
         state: present
     - name: Démarre le service sshd
       service:
-        name: sshd
+        name: ssh
         state: started
+        enabled: yes
     - name: Déploiement clé ssh
       copy:
         src: key/serverkey.pub
         dest: /root/.ssh/authorized_keys
+        mode: 0600
+        owner: root
+        group: root
