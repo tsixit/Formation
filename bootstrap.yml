@@ -2,8 +2,8 @@
 # Bootstraping
 - hosts: all
   name: Bootstraping des vms
-  vars:
-    message: "Bonjour !"
+   #vars:
+   #message: "Bonjour !"
   tasks:
     - name: Vérification de l'absence du fichier OOaptproxy
       file:

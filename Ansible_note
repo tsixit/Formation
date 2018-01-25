@@ -46,6 +46,7 @@ ansible-playbook : permet de jouer les playbook
 	ansible-playbook  webserver.yml -l '!node1' : tout sauf une machine, ici node1
 	ansible-playbook bootstrap.yml -l node3 -k : -k permet de se connecter avec le mot de passe. cela necessite l'installation de sshpass sur la machine pilote.utile pour la première connexion  au serveur. Mais avant il faut récuperer la clé publique du serveur.
 	ansible-playbook bootstrap.yml --start-at-task "nom du task" : permet de démarrer le playbook au task indiqué
+	ansible-playbook -e message=toto bootstrap.yml : -e permet d'affecter une valeur à une variable
 
 ansible -m fetch
 
@@ -66,3 +67,7 @@ jinja2 : moteur de templating, utile pour l'utilisation des variables
 	on peut ajouter des filtes; dans le cas d'une variable cela permet d'avoir une valeur par défaut de la valeur dans le cas où celle-ci n'est pas définie
 	exe: content: {{ message | default('Coucou ! ') }}
 	si message est absent, c'est la valeur de defaut qui sera utilisé.
+
+On peut ajouter une variable à une machine de l'inventaire .
+La declaration d'une variables dans le playbook et en meme temps dans l'inventaire masque la valeur de la variable défini dans le playbook.
+Donc pour faire, on supprime la déclaration de la variable dans le playbook, on ajoute un filtre jinja2 pour une valeur par defaut, ensuite on définit la valeur voulu dans l'inventaire.

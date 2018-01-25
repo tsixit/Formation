@@ -10,4 +10,4 @@
      - name: deploiement du fichier index.html
        copy:
           dest: /var/www/index.html
-          content: Coucou, je suis ansible
+          content: Coucou, je suis ansible {{ message | default('coucou web') }}

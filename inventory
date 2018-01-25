@@ -4,4 +4,4 @@
 [webservers]
 node1
 node2
-node3
+node3 message="Node3 est la meilleur !!"
