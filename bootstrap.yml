@@ -66,4 +66,18 @@
     - name: Changement des hostnames
       hostname:
         name: "{{ inventory_hostname }}"
+- host: all
+  name: Gestion utilisateur
+  tasks:
+    - name: utilisateur ansible
+      user: 
+        name: ansible
+        group: ansible
+      copy:
+        src: key/mykey.pub
+        dest: /home/ansible/.ssh/authorized_keys
+
+
+
+
 

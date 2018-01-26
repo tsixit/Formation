@@ -10,4 +10,4 @@ node2
 
 # Déclaration de variables sur un groupe de serveur
 [webservers:vars]
-message="coucou, mais pour un webserver\,"
+message="coucou, mais pour un webserver\n,"
