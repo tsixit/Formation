@@ -2,13 +2,12 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>Titre de la page</title>
+  <title>Serveru géré par ansible</title>
   <link rel="stylesheet" href="style.css">
   <script src="script.js"></script>
 </head>
 <body>
-  ...
-  <!-- Le reste du contenu -->
-  ...
+  Coucou, je suis ansible
+  {{ message | default ('coucou web') }}
 </body>
 </html>
