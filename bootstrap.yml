@@ -90,7 +90,7 @@
       when: "ansible_os_family == 'Debian'"
 - hosts: all
   name: Gestion utilisateur
-  bootstrap_user: ansible
+  tags: [usertask]
   tasks:
     - import_tasks: bootstrap_user.yml
 

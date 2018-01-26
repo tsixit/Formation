@@ -3,11 +3,15 @@
 - hosts: webservers
   name: Déploiement apache sur node1
   tasks:
-     - name: verification du package apache2
-       apt:
-          name: apache2
-          state: present
-     - name: deploiement du fichier index.html
-       template:
-          dest: /var/www/html/index.html
-          src: index.html.j2
+    - include_vars: "{{ item }}"
+    with_first_found:
+      - webservers_{{ ansible_os_family | lower}}_vars.yml
+      - webservers_default_vars
+    - name: verification du package 
+      package:
+        name: "{{ apache_name }}"
+        state: present
+    - name: deploiement du fichier index.html
+      template:
+        dest: /var/www/html/index.html
+        src: index.html.j2

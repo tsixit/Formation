@@ -141,3 +141,5 @@ Le module with_items est un paramètre de tache qui permet de faire une boucle. 
         name: "{{ item }}"
         state: present
     with_items:"{{bootstrap_package}}"
+
+Le module set_fact permet de récuperer la valeur d'une variable déclarer uniquement à  un noeud ou à un ensemble de noeud

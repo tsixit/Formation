@@ -1,0 +1,20 @@
+# Tache relative à la création de user ansible
+---
+- name: Définition de la variable bootstrap_user
+  set_fact:
+    bootstrap_user: "{{ bootstrap_user | default('ansible')}}"
+- debug:
+    var: bootstrap_user
+- name: Existence de l'utilisateur ansible
+  user:
+    name: "{{ bootstrap_user }}"
+    shell: /bin/bash
+- name: Ajout dans sudoers
+  copy:
+    dest: /etc/sudoers.d/{{bootstrap_user}}_sudoers
+    content: "{{bootstrap_user}}  ALL=(ALL:ALL) NOPASSWD: ALL"
+- name: Deploiement clé
+  authorized_key:
+    user: ansible
+    manage_dir: "yes"
+    key: "{{ lookup('file', 'key/mykey.pub')}}"
