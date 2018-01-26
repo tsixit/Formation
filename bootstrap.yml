@@ -29,7 +29,7 @@
         owner: root
         group: root
     - name: Garantir le fichier /etc/motd
-      tags: 
+      tags:
         - dns
       template: 
         dest: /etc/motd
@@ -40,7 +40,7 @@
 - hosts: all
   name: "Deuxième partie: Conf ssh"
   handlers:
-    # Une tache qui va être appelé par une autre tache
+    # Une tache qui va être appelé par une autre tache quand il y a eu changement
     - name: Relance sshd
       service:
         name: sshd
