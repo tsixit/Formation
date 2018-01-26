@@ -10,10 +10,20 @@
         path: /etc/apt/apt.conf.d/00aptproxy
         state: absent
       when: "ansible_os_family == 'Debian'"
+    - name: Suppression de proxy da,s /etc/yum.conf
+      lineinfile:
+        path: /etc/yum.conf
+        regexp: "proxy=.+"
+        state: absent
+      when: "ansible_os_family == 'RedHat'"
     - name: Installation serveur ssh et sudo
       # apt:
       package:
-        name: openssh-server,sudo
+        name: openssh-server
+        state: present
+    - name: Installation sudo
+      package:
+        name: sudo
         state: present
     - name: Démarrer le service sshd et démarrer au boot
       service:
@@ -78,19 +88,5 @@
 - hosts: all
   name: Gestion utilisateur
   tasks:
-    - name: utilisateur ansible
-      user:
-        name: ansible
-        home: /home/ansible/
-        shell: /bin/bash
-    - name: Ajout dans sudoers
-      copy:
-        dest: /etc/sudoers.d/ansible_sudoers
-        content: "ansible  ALL=(ALL:ALL) NOPASSWD: ALL"
-    - name: Deploiement clé
-      authorized_key:
-        user: ansible
-        manage_dir: "yes"
-        key: "{{ lookup('file', 'key/mykey.pub')}}"
-
+    - import_tasks: bootstrap_user.yml
 

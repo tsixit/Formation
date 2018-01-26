@@ -114,3 +114,5 @@ Cela se fait en ajoutant "tags" qui comprend une liste
 	le tags ici est dns, visible dans le playbook
 
 Le module template permet de récuperer  le contenu d'un fichier au format jinja2 au lieu de mettre directement dans le playbook.
+
+Le module import_tasks: permet d'importer des taches qui se trouve dans un autre fichier
