@@ -66,6 +66,10 @@
     - name: Changement des hostnames
       hostname:
         name: "{{ inventory_hostname }}"
+    - name: Garantir le /etc/hostname
+      lineinfile:
+        path: /etc/hosts
+        line: "{{ ansible_default_ipv4.address }} {{ inventory_hostname }}"
 - hosts: all
   name: Gestion utilisateur
   tasks:
@@ -78,12 +82,10 @@
       copy:
         dest: /etc/sudoers.d/ansible_sudoers
         content: "ansible  ALL=(ALL:ALL) NOPASSWD: ALL"
-    - name: Répertoire ssh
-      file:
-        path: /home/ansible/.ssh
-        state: directory
     - name: Deploiement clé
       authorized_key:
         user: ansible
         manage_dir: yes
         key: "{{ lookup('file', 'key/mykey.pub')}}"
+
+
