@@ -1,4 +1,4 @@
-# Playbook global pour l'infra, à l'aide des import ou avec les roles
+# Playbook global pour l'infra, à l'aide des import ou avec l'utilisation des roles
 ---
 #- import_playbook: bootstrap.yml
 - hosts: all
