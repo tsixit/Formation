@@ -10,7 +10,6 @@
       - tmux
       - vim
       - bash-completion
-
   tasks:
     - name: Vérification de l'absence du fichier OOaptproxy
       file:
@@ -91,6 +90,7 @@
       when: "ansible_os_family == 'Debian'"
 - hosts: all
   name: Gestion utilisateur
+  bootstrap_user: ansible
   tasks:
     - import_tasks: bootstrap_user.yml
 
