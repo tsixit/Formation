@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="style.css">
   <script src="script.js"></script>
 </head>
-<body>
+<body id="home" style= "color: {{ apache_color }}">
   Coucou, je suis ansible
   {{ message | default ('coucou web') }}
 </body>

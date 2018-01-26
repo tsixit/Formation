@@ -4,6 +4,7 @@
   name: Déploiement apache sur node1
   tasks:
     - include_vars: "{{ item }}"
+    # Définit deux fichiers selon le type de l'OS, ici par défaut c'est Debian,
       with_first_found:
       - "webservers_{{ ansible_os_family | lower }}_vars.yml"
       - webservers_default_vars.yml
