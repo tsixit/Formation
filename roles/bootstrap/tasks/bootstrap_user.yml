@@ -1,8 +1,9 @@
 # Tache relative à la création de user ansible
 ---
 - name: Définition de la variable bootstrap_user
-  set_fact:
-    bootstrap_user: "{{ bootstrap_user | default('ansible')}}"
+# plus besoin car défini dans le role bootstrap/default/main.yml
+# set_fact:
+#    bootstrap_user: "{{ bootstrap_user }}"
 - debug:
     var: bootstrap_user
 - name: Existence de l'utilisateur ansible
