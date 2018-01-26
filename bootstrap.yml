@@ -4,6 +4,13 @@
   name: Bootstraping des vms
   vars:
     message: " Bonjour !"
+    bootstrap_package:
+      - openssh-server
+      - sudo
+      - tmux
+      - vim
+      - bash-completion
+
   tasks:
     - name: Vérification de l'absence du fichier OOaptproxy
       file:
@@ -19,16 +26,9 @@
     - name: Installation des package
       # apt:
       package:
-        #name: openssh-server
-        #state: present
-        name: "{{ items }}"
+        name: "{{ item }}"
         state: present
-      with_items:
-        - openssh-server
-        - sudo
-        - tmux
-        - vim
-        - bash-completion
+      with_items: "{{bootstrap_package}}"
     - name: Démarrer le service sshd et démarrer au boot
       service:
         name: sshd
