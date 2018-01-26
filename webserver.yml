@@ -1,6 +1,0 @@
----
-# fichier de configuration http
-- hosts: webservers
-  name: Déploiement apache sur node1
-  roles: 
-      - webserver
