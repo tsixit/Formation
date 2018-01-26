@@ -1,0 +1,3 @@
+# Contient tous les variables par défaut écrasable par ceux qui sont dans l'inventaire
+---
+message: message par défaut pour les serveurs
