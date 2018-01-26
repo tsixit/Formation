@@ -164,3 +164,7 @@ Le with_first_found permet d'inclure les fichiers de variable pour pouvoir être
 ansible-playbook --list-tasks infraweb.yml --list-hosts 
 
 Role: manière de tres bien rangé les taches, les variables, les templates, et les variables ( /etc/ansible/roles). Ansible créer les répertoires selon le type
+
+La comande ansible-galaxy permet de creer toute l'arborescen d'un roles
+	exe : ansible-galaxy init toto
+	voir http://galaxy.ansible.com
