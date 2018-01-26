@@ -143,3 +143,10 @@ Le module with_items est un paramètre de tache qui permet de faire une boucle. 
     with_items:"{{bootstrap_package}}"
 
 Le module set_fact permet de récuperer la valeur d'une variable déclarer uniquement à  un noeud ou à un ensemble de noeud
+
+Le module include_vars permet de récuper le contenu d'une variable contenu dans un fichier :
+
+include_vars: "{{ item }}"
+    with_first_found:
+      - webservers_{{ ansible_os_family | lower}}_vars.yml
+      - webservers_default_vars
