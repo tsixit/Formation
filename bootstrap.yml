@@ -70,6 +70,9 @@
       lineinfile:
         path: /etc/hosts
         line: "{{ ansible_default_ipv4.address }} {{ inventory_hostname }}"
+        # le /etc/hostname n'est pas contextuel mais c'est par mesure de sécurité
+        # On a pu ajouer directement {{ ansible_default_ipv4.address }} {{ inventory_hostname }}
+      when: {{ ansible_os_family == Debin }}  
 - hosts: all
   name: Gestion utilisateur
   tasks:
@@ -85,7 +88,7 @@
     - name: Deploiement clé
       authorized_key:
         user: ansible
-        manage_dir: yes
+        manage_dir: "yes"
         key: "{{ lookup('file', 'key/mykey.pub')}}"
 
 
