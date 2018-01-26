@@ -147,7 +147,20 @@ Le module set_fact permet de récuperer la valeur d'une variable déclarer uniqu
 Le module include_vars permet d'inclure des variables contenu dans un fichier
 include_vars: "{{ item }}"
 
-Le with_first_found permet de chercher d'inclure les fichiers
+Le with_first_found permet d'inclure les fichiers de variable pour pouvoir être utiliser. Il les inclu selon l'ordre de déclaration
     with_first_found:
       - webservers_{{ ansible_os_family | lower}}_vars.yml
       - webservers_default_vars
+
+ Le Boucle dans les templates
+
+
+ Lancer plusieurs playbook en même temps :
+ 	ansible-playbook bootstrap.yml webserver.yml
+ Importer des playbook  :
+ 	- import_playbook: bootstrap.yml
+	- import_playbook: webserver.yml
+
+ansible-playbook --list-tasks infraweb.yml --list-hosts 
+
+Role: manière de tres bien rangé les actes ( /etc/ansible/roles)

@@ -1,0 +1,15 @@
+# Playbook global pour l'infra, à l'aide des import ou avec les roles
+---
+#- import_playbook: bootstrap.yml
+- hosts: all
+  name: Bootstrap des VMs
+  tags: [bootstrap]
+  roles:
+    - bootstrap
+#- import_playbook: webserver.yml
+#  tags: [webserver]
+- hosts: webservers
+  name: deploy web
+  tags: [webserver]
+  roles: 
+      - webserver

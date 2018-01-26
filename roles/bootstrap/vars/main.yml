@@ -1,0 +1,8 @@
+#
+---
+bootstrap_package:
+      - openssh-server
+      - sudo
+      - tmux
+      - vim
+      - bash-completion

@@ -1,0 +1,6 @@
+# Tous les Handlers
+---
+- name: Relance sshd
+      service:
+        name: sshd
+        state: reloaded
