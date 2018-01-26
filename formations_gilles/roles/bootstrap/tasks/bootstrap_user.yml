@@ -1,0 +1,17 @@
+# Tâches relatives à l'utilisateur ansible à déployer
+---
+- debug:
+    var: bootstrap_user
+- name: Existence de l'utilisateur ansible
+  user:
+    name: "{{ bootstrap_user }}"
+    shell: /bin/bash
+- name: Clé pour ansible
+  authorized_key:
+    user: "{{ bootstrap_user }}"
+    manage_dir: True
+    key: "{{ lookup('file', '~/.ssh/id_rsa.pub')}}"
+- name: Conf sudo pour ansible
+  copy:
+    dest: /etc/sudoers.d/ansible
+    content: "{{ bootstrap_user }}	ALL=(ALL:ALL) NOPASSWD: ALL"

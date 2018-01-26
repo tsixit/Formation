@@ -1,0 +1,4 @@
+# Variables par défaut pour webserver
+# Celles-ci sont écrasables par les variables de l'inventaire
+---
+message: message par défaut pour les webservers

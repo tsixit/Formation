@@ -1,0 +1,11 @@
+# Playbook global pour l'infrastructure
+---
+- hosts: all
+  tags: [bootstrap]
+  roles:
+    - bootstrap
+- hosts: webservers
+  tags: [webserver]
+  name: Déploiement apache
+  roles:
+    - webserver

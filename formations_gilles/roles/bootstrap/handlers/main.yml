@@ -1,0 +1,5 @@
+---
+- name: Rechargement SSH
+  service:
+    name: sshd
+    state: reloaded

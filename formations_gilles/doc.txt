@@ -1,0 +1,7 @@
+* Gestion des paquets (apt/yum)
+* Gestion des utilisateurs
+* Permissions
+* SSH, clés et configuration
+* Un peu de vim
+* Git : cf git.txt, y compris les outils tiers
+

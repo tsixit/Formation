@@ -1,0 +1,63 @@
+# Tâches (1er acte et 2ème acte réunis) de bootstrap
+---
+- name: Désactivation de la conf APT::Proxy des modèles
+  file:
+    path: /etc/apt/apt.conf.d/00aptproxy
+    state: absent
+  when: "ansible_os_family == 'Debian'"
+- name: Suppression de la conf du proxy sur les RedHat-like
+  lineinfile:
+    path: /etc/yum.conf
+    regexp: "^proxy=.+"
+    state: absent
+  when: "ansible_os_family == 'RedHat'"
+- name: Installation des packages nécessaires
+  tags: [packages]
+  package:
+    name: "{{ item }}"
+    state: present
+  # On effectue la tâche pour chacun des éléments de la liste
+  with_items: "{{ bootstrap_packages }}"
+- name: Service SSH
+  service:
+    name: sshd
+    state: started
+    enabled: True
+- name: Clé SSH pour root
+  copy:
+    # src travaille en relatif à là où ansible est lancé
+    src: cle_root.pub
+    dest: /root/.ssh/authorized_keys
+    mode: 0600
+    owner: root
+    group: root
+- name: Fichier MOTD
+  tags: [dns]
+  template:
+    dest: /etc/motd
+    src: motd.j2
+    owner: root
+    group: root
+    mode: 0644
+- name: Nouveau fichier SSHD
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    line: PermitRootLogin without-password
+    regexp: "^#?PermitRootLogin .*"
+    state: present
+    mode: 0644
+    owner: root
+    group: root
+  notify: [Rechargement SSH]
+- name: Définition du hostname selon l'inventaire
+  tags: [dns]
+  hostname:
+    name: "{{ inventory_hostname }}"
+- name: Définition d'une ligne pour le nom de la machine dans /etc/hosts
+  tags: [dns]
+  lineinfile:
+    path: /etc/hosts
+    line: "{{ ansible_default_ipv4.address }} {{ inventory_hostname }}"
+  when: "ansible_os_family == 'Debian'"
+- import_tasks: bootstrap_user.yml
+  tags: [user_bootstrap]

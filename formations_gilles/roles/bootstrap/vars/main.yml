@@ -1,0 +1,8 @@
+# Variables pour le rôle
+---
+bootstrap_packages:
+  - openssh-server
+  - sudo
+  - tmux
+  - vim
+  - bash-completion

@@ -1,0 +1,24 @@
+git config : configuration locale de git (nom, email)
+git init rep : création d'un dépôt dans la copie locale rep (et création du répertoire s'il n'existe pas)
+git add fichier : 2 opérations
+ * ajouter le fichier à l'index (liste des fichiers à suivre) si inconnu
+ * ajouter les modifications aux fichiers à la prochaine version
+
+git status : affiche l'état de la copie locale (par rapport au dépôt)
+git commit -m "Message informatif" : Enterriner la version en cours, en indiquant en commentaire sa teneur. 
+git commit -am "XXX" : idem, mais en ajoutant à la version suivante tous les fichiers déjà connus par git
+git log : afficher l'historique du dépôt
+  --oneline : affichage réduit
+  --stat : affiche les fichiers modifiés par le commit
+  -N : affiche seulement les N dernières entrées
+
+
+Outils : tig, gitk
+
+Branches distantes : possibilité de "mirroiter" nos changements sur un dépôt distant.
+git init --bare : création d'un dépôt nu (sans copie locale) pour partager notre dépôt
+git remote add NOM login@serveur:depot.git : ajout d'une référence distante
+git push -u origin master : envoi de notre historique sur un dépôt distant "origin", en faisant correspondre la branche active à master sur le serveur
+git clone login@serveur:depot.git : permet de créer une copie locale et un dépôt local correspondant à celui du serveur
+git pull : récupération des modifs et intégration dans la copie locale
+Modif possible depuis n'importe quelle copie locale

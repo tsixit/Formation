@@ -1,0 +1,13 @@
+node1 message="Node1 c'est le meilleur !"
+node2
+node3
+node4
+
+# Groupe webservers
+[webservers]
+node1
+node2
+node4
+
+[webservers:vars]
+message="Coucou, mais pour un webserver"
