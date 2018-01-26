@@ -67,17 +67,17 @@
       hostname:
         name: "{{ inventory_hostname }}"
 - hosts: all
-  name: "Gestion utilisateur"
+  name: Gestion utilisateur
   tasks:
-    - name: "utilisateur ansible"
+    - name: utilisateur ansible
       user:
         name: ansible
         home: /home/ansible/
         shell: /bin/bash
     - name: Ajout dans sudoers
       copy:
-        src: ansible_sudoers
-        dest: /etc/sudoers.d/
+        dest: /etc/sudoers.d/ansible_sudoers
+        content: "ansible  ALL=(ALL:ALL) NOPASSWD: ALL"
     - name: Répertoire ssh
       file:
         path: /home/ansible/.ssh
