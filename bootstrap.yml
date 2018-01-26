@@ -16,15 +16,19 @@
         regexp: "proxy=.+"
         state: absent
       when: "ansible_os_family == 'RedHat'"
-    - name: Installation serveur ssh et sudo
+    - name: Installation des package
       # apt:
       package:
-        name: openssh-server
+        #name: openssh-server
+        #state: present
+        name: "{{ items }}"
         state: present
-    - name: Installation sudo
-      package:
-        name: sudo
-        state: present
+      with_items:
+        - openssh-server
+        - sudo
+        - tmux
+        - vim
+        - bash-completion
     - name: Démarrer le service sshd et démarrer au boot
       service:
         name: sshd
