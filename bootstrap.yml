@@ -31,12 +31,9 @@
     - name: Garantir le fichier /etc/motd
       tags: 
         - dns
-      copy:
+      template: 
         dest: /etc/motd
-        content: "{{ message | default('Coucou ! ') }}\n
-        Ce système est géré par Ansible et tourne sur {{ ansible_distribution }}\n
-        Version du noyau : {{ ansible_kernel }}\n
-        Mon IP est : {{ ansible_default_ipv4.address}}\n"
+        src: motd.j2
         mode: 0644
         owner: root
         group: root
