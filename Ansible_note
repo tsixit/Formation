@@ -106,3 +106,11 @@ Le module "debug" avec l'argument "var" permet d'afficher la valeur d'une variab
 
 La module authorized_key permet de gérer les clé publique.
 La fontion lookup('file', 'key/mykey.pub' permet de récuper la clé dans un fichier.Ici dans key/mykey.pub
+
+
+Il est possible d'exécuter uniquement certaine tache dans le playbook moyennant d'une tag sur les taches.
+Cela se fait en ajoutant "tags" qui comprend une liste
+	ansible-playbook --tags dns bootstrap.yml
+	le tags ici est dns, visible dans le playbook
+
+Le module template permet de récuperer  le contenu d'un fichier au format jinja2 au lieu de mettre directement dans le playbook.
