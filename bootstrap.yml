@@ -10,14 +10,10 @@
         path: /etc/apt/apt.conf.d/00aptproxy
         state: absent
       when: "ansible_os_family == 'Debian'"
-    - name: Installation serveur ssh
+    - name: Installation serveur ssh et sudo
       # apt:
       package:
-        name: openssh-server
-        state: present
-    - name : Installation de sudo
-      package:
-        name: sudo 
+        name: openssh-server,sudo
         state: present
     - name: Démarrer le service sshd et démarrer au boot
       service:
@@ -76,16 +72,18 @@
     - name: "utilisateur ansible"
       user:
         name: ansible
-        state: present
         home: /home/ansible/
         shell: /bin/bash
     - name: Ajout dans sudoers
-      shell: "echo  'ALL=(ALL:ALL) NOPASSWD: ALL' >>/etc/sudoers"
+      copy:
+        src: sudoers
+        dest: /etc/
     - name: Répertoire ssh
       file:
         path: /home/ansible/.ssh
         state: directory
     - name: Deploiement clé
-      copy:
-        src: key/mykey.pub
-        dest: /home/ansible/.ssh/authorized_keys
+      authorized_key:
+        user: ansible
+        manage_dir: yes
+        key: "{{ lookup('file', 'key/mykey.pub')}}"

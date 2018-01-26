@@ -103,3 +103,6 @@ ansible_default_ipv4.address: permet de récuper la valeur d'un disctionnaire
 le module "package" permet de gérer automatiquement le gestionnaire de paquet en fonction de la distribution (apt, yum)
 
 Le module "debug" avec l'argument "var" permet d'afficher la valeur d'une variable
+
+La module authorized_key permet de gérer les clé publique.
+La fontion lookup('file', 'key/mykey.pub' permet de récuper la clé dans un fichier.Ici dans key/mykey.pub
